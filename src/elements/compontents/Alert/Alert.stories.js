@@ -1,10 +1,10 @@
-import { Alert } from './Alert';
+import template from "./Alert.hbs";
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
     title: 'Components/Alert',
     tags: ['autodocs'],
-    render: (args) => Alert(args),
+    render: (args) => template(args),
     argTypes: {
         color: {
             control: { type: 'select' },

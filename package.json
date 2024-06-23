@@ -24,12 +24,15 @@
     "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
     "@storybook/addon-webpack5-compiler-swc": "^1.0.4",
     "@storybook/blocks": "^8.1.10",
+    "@storybook/html-webpack5": "^8.1.10",
     "@storybook/test": "^8.1.10",
     "@storybook/web-components": "^8.1.10",
     "@storybook/web-components-webpack5": "^8.1.10",
+    "autoprefixer": "^10.4.19",
     "css-loader": "^7.1.2",
     "lit": "^3.1.4",
     "mini-css-extract-plugin": "^2.9.0",
+    "postcss-loader": "^8.1.1",
     "sass": "^1.77.6",
     "sass-loader": "^14.2.1",
     "storybook": "^8.1.10",
@@ -44,6 +47,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "@storybook/theming": "^8.1.10",
-    "bootstrap": "^5.3.3"
+    "bootstrap": "^5.3.3",
+    "handlebars-loader": "^1.7.3"
   }
 }

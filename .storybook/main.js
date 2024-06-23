@@ -1,37 +1,40 @@
-import autoprefixer from "autoprefixer";
+import autoprefixer from 'autoprefixer';
+import * as path from 'path';
 
 /** @type { import('@storybook/web-components-webpack5').StorybookConfig } */
 const config = {
-  stories: ["../docs/**/*.mdx", "../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
+  stories: ['../docs/**/*.mdx', '../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
-    "@storybook/addon-webpack5-compiler-swc",
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-webpack5-compiler-babel",
-    "@storybook/addon-styling-webpack",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
+    '@storybook/addon-webpack5-compiler-babel',
+    '@storybook/addon-styling-webpack',
+    /*{
+      name: '@storybook/addon-styling-webpack',
+      options: {
+        rules: [
+          {
+            test: /\.hbs$/,
+            loader: "handlebars-loader",
+          }
+        ]
+      }
+    },*/
     '@storybook/addon-a11y'
   ],
   framework: {
-    name: "@storybook/web-components-webpack5",
+    name: '@storybook/html-webpack5',
     options: {},
   },
   staticDirs: ['../src/assets'],
   webpackFinal: async (config) => {
-    return {
-      ...config,
-      module: { ...config.module, rules: [...config.module.rules, {
-          test: /\.(scss)$/,
+    config.module.rules.push(
+        {
+          test: /\.scss$/,
           use: [
+            'style-loader',
+            'css-loader',
             {
-              // Adds CSS to the DOM by injecting a `<style>` tag
-              loader: 'style-loader'
-            },
-            {
-              // Interprets `@import` and `url()` like `import/require()` and will resolve them
-              loader: 'css-loader'
-            },
-            {
-              // Loader for webpack to process CSS with PostCSS
               loader: 'postcss-loader',
               options: {
                 postcssOptions: {
@@ -41,15 +44,28 @@ const config = {
                 }
               }
             },
-            {
-              // Loads a SASS/SCSS file and compiles it to CSS
-              loader: 'sass-loader'
-            }
-          ]
+            'sass-loader'
+          ],
+          include: path.resolve(__dirname, '../src/')
+        },
+        {
+          test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+          type: 'asset/resource',
+          generator: {
+            filename: 'fonts/[name][ext][query]'
+          },
+          include: path.resolve(__dirname, '../src/')
+        },
+        {
+          test: /\.hbs$/,
+          loader: 'handlebars-loader',
+          options: {
+            // Specify Mustache options here
+          },
+          include: path.resolve(__dirname, '../src/')
         }
-        ]
-      },
-    };
+    );
+    return config;
   }
 };
 export default config;
