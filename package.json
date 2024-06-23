@@ -1,0 +1,49 @@
+{
+  "name": "@phillopp/bootstrap-jrk-theme",
+  "version": "0.1.0",
+  "description": "Bootstrap im Design des Deutschen Jugendrotkreuzes.",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack serve",
+    "build": "webpack build --mode=production",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [
+    "jrk",
+    "drk"
+  ],
+  "author": "Philip Falliano",
+  "license": "ISC",
+  "devDependencies": {
+    "@storybook/addon-a11y": "^8.1.10",
+    "@storybook/addon-essentials": "^8.1.10",
+    "@storybook/addon-links": "^8.1.10",
+    "@storybook/addon-styling-webpack": "^1.0.0",
+    "@storybook/addon-webpack5-compiler-babel": "^3.0.3",
+    "@storybook/addon-webpack5-compiler-swc": "^1.0.4",
+    "@storybook/blocks": "^8.1.10",
+    "@storybook/test": "^8.1.10",
+    "@storybook/web-components": "^8.1.10",
+    "@storybook/web-components-webpack5": "^8.1.10",
+    "css-loader": "^7.1.2",
+    "lit": "^3.1.4",
+    "mini-css-extract-plugin": "^2.9.0",
+    "sass": "^1.77.6",
+    "sass-loader": "^14.2.1",
+    "storybook": "^8.1.10",
+    "style-loader": "^4.0.0",
+    "stylelint": "^16.6.1",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "@storybook/theming": "^8.1.10",
+    "bootstrap": "^5.3.3"
+  }
+}
